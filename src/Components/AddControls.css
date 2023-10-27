@@ -1,0 +1,47 @@
+.standard-container-1 {
+    min-height: 100vh;
+    width:100%;
+    background-size: cover;
+    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+.submit-btn{
+    display:flex;
+    justify-content: center;
+    
+}
+.input-text {
+    border-radius: 10px;
+    margin: 10px;
+    border-width: 0px;
+    padding:5px;
+    font-size: 0.8vw;
+
+}
+.input-1 {
+    border-radius: 10px;
+    padding:4px;
+    border-width: 0px;
+    font-size: 0.8vw;
+    width:3vw;
+    box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) 
+
+}
+.submit-button {
+    background-color: rgb(20, 114, 43);
+    color:white;
+    border-radius: 15px;
+    border-width: 0px;
+    width:4vw;
+    height:4vh;
+
+}
+.btn {
+    width:4vw;
+    height:4vh;
+    font-size:0.5vw;
+}
+.btn-danger {
+    background-color: red;
+}
+
+

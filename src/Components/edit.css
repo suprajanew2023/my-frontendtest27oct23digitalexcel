@@ -1,0 +1,20 @@
+.view-container {
+    padding: 10px;
+    font-size: 0.7vw;
+    min-height: 100vh;
+    width:100%;
+    background-size: cover;
+    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+.btn-primary1 {
+    font-size: 0.7vw;
+    width:8vw;
+    height:5vh;
+    border-radius: 5px;
+    border-width: 0px;
+    color: whitesmoke;
+    background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
+
+
+
+}
