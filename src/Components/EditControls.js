@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Axios from 'axios'; // You need to install Axios or use another HTTP client
 import { putData } from './Service';
+import { deleteData } from './Service';
 import "./edit.css"
 function ControlDetailsTable() {
   const [standard, setStandard] = useState('');
@@ -31,6 +32,7 @@ function ControlDetailsTable() {
     setEditedSubcontrol(subcontrol);
     console.log(subcontrol);
   }
+  
  
 
   const handleSaveChanges = async() => {
@@ -77,6 +79,7 @@ function ControlDetailsTable() {
     });
     console.log(editedSubcontrol)
   }
+  
 
   return (
     <div className='view-container mx-4 my-4'>
@@ -87,7 +90,7 @@ function ControlDetailsTable() {
           type="text"
           id="standardInput"
           value={standard}
-          className="form-control" placeholder='Enter Standard Name !!'
+          className="input-text" placeholder='Enter Standard Name !!'
           onChange={handleStandardChange}
         />
         </div>

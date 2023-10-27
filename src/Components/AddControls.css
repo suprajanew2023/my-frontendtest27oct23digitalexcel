@@ -2,7 +2,6 @@
     min-height: 100vh;
     width:100%;
     background-size: cover;
-    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
 .submit-btn{
     display:flex;
@@ -10,38 +9,57 @@
     
 }
 .input-text {
-    border-radius: 10px;
-    margin: 10px;
-    border-width: 0px;
+    height:4vh;
     padding:5px;
-    font-size: 0.8vw;
+    margin: 5px;
+    border-radius:5px ;
+    border-width: 1px;
+    font-size: 1.4vh;
+    box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) 
 
 }
 .input-1 {
-    border-radius: 10px;
-    padding:4px;
-    border-width: 0px;
-    font-size: 0.8vw;
+    border-radius: 5px;
+    padding:5px;
+    border-width: 1px;
+    font-size: 1.4vh;
     width:3vw;
+    height:4vh;
+    margin: 5px;
     box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) 
 
 }
 .submit-button {
     background-color: rgb(20, 114, 43);
+    font-size: 1vh;
     color:white;
-    border-radius: 15px;
+    border-radius: 5px;
     border-width: 0px;
     width:4vw;
     height:4vh;
+    box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) 
 
 }
 .btn {
-    width:4vw;
     height:4vh;
-    font-size:0.5vw;
+    font-size:1vh;
+    text-align: center;
 }
 .btn-danger {
     background-color: red;
+    width:2.5vw;
+    border-radius: 5px;
+    font-size: 2vh;
+    text-align: center;
+}
+.btn-danger-1 {
+    background-color: red;
+    width:4vw;
+    font-size: 1.1vh;
+    color:white;
+}
+.inputfiled-container {
+    display: flex;
 }
 
 
