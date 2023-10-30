@@ -29,3 +29,8 @@ export async function register(data)
    return await axios.post("http://localhost:3000/register",data,{headers:{'Content-Type':'application/json'}}
    )
 }
+export async function getStandards()
+{
+   return await axios.get("http://localhost:3000/standards");
+
+}

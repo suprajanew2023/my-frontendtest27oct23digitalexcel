@@ -7,30 +7,12 @@
     background-color: rgb(255, 255, 255);
     min-height:100%;
     width:100%;
-    
+
 }
 .header-1 {
     background-color: rgb(229, 230, 240);
     color:white;
     height:5vh;
     box-shadow: 10px 9px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) 
-}
-.drop-down {
-    width: 10vw;
-    height: 5vh;
-    font-size: 0.7vw;
-    background-color: rgb(169, 180, 180);
-}
-.dropdown-container {
-    margin: 20px;
-}
-.drop-listitems {
-    background-color: #146c43;
-    margin: 5px;
-    font-size: 0.8vw;
-}
-.list-item {
-    color:white;
-    font-weight: 400;
 }
 

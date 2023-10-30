@@ -4,16 +4,87 @@
     min-height: 100vh;
     width:100%;
     background-size: cover;
+   
 }
-.btn-primary1 {
-    font-size: 0.7vw;
-    width:8vw;
-    height:5vh;
-    border-radius: 5px;
+.table {
+    margin: 20px;
+}
+.table-head
+{
+    max-width: 100px;
+    word-wrap: break-word;
+     text-overflow: ellipsis;
+     
+}
+.table-data
+{
+    max-width: 100px;
+    word-wrap: break-word;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     border: 1px solid #ddd
+   
+}
+.edit-Button {
+    background-color:rgb(40, 86, 212);
+    height:3vh;
+    color:white;
     border-width: 0px;
-    color: whitesmoke;
-    background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
+    border-radius: 5px;
+    font-size: 1vh;
+}
+.delete-button {
+    background-color: red;
+    height:3vh;
+    color:white;
+    border-width: 0px;
+    border-radius: 5px;
+    font-size: 1vh;
 
+}
+/* .snackbar-container {
+    position: fixed;
+    top: 16px; 
+    right: 16px; 
+    color:blue
+  } */
+  .nav-btn
+  {
+   
+        height:4vh;
+        font-size:1.5vh;
+        text-align: center;
+        background-color:rgb(40, 86, 212);
+        color:white;
+        border-radius:50px;
 
+    
+  }
+  .flex-container{
+    display: flex;
+    justify-content: space-between;
+  }
+  .standard-card {
+    width:95vw;
+    color:white;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 5px 5px 5px;
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+.table {
+    width:95%;
+    
+}
+.Accordian {
+    width:95vw;
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 20px 20px 20px;
 
+}
+.table-refno{
+    width:4vw;
+}
+.table-subcontrol {
+    width:60vw;
 }

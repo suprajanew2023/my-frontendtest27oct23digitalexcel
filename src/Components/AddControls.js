@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import './AddControls.css'
 import {  postData } from './Service';
 import { BsFillTrash3Fill } from "react-icons/bs";
-
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 function YourComponent() {
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarOpens, setSnackbarOpens] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
   const [formData, setFormData] = useState({
     standard: '',
     controls: [
@@ -78,13 +82,40 @@ function YourComponent() {
     updatedFormData.controls[controlIndex].subcontrols.splice(subcontrolIndex, 1);
     setFormData(updatedFormData);
   };
-
+  const showSnackbars = (message) => {
+    setSnackbarMessage(message);
+    setSnackbarOpens(true);
+  };
+  const showSnackbar = () => {
+    setSnackbarOpen(true);
+    setTimeout(() => {
+      setSnackbarOpen(false);
+    }, 5000);
+  };
   const handleSubmit = async () => {
-    
+    if (!formData.standard.trim()) {
+      showSnackbars("Please enter a valid standard.");
+      return;
+    }
+  
+    // Check if any control or subcontrol fields are empty
+    for (const control of formData.controls) {
+      if (!control.control.trim()) {
+        showSnackbars("Please enter a valid control for all controls.");
+        return;
+      }
+  
+      for (const subcontrol of control.subcontrols) {
+        if (!subcontrol.refno.trim() || !subcontrol.rational.trim() || !subcontrol.rationalrating.trim() || !subcontrol.evidence.trim()) {
+          showSnackbars("Please enter a valid value for all subcontrol fields.");
+          return;
+        }
+      }
+    }
     let res= await postData(formData)
     if (res.status === 201) 
     {
-      alert("Added Controls and SubControls Successfully");
+      showSnackbar();
       setFormData({
         standard: '',
         controls: [
@@ -101,12 +132,41 @@ function YourComponent() {
           },
         ],
       });
-    } 
+    } else {
+      console.log("please enter Valid Standards")
+    }
+      
      
   };
 
   return (
     <div className='standard-container-1'>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={5000}
+        onClose={() => setSnackbarOpen(false)}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+      >
+        <Alert severity="success" sx={{ backgroundColor: '#4CAF50', color: 'white' }}>
+          Added Controls and SubControls Successfully
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={snackbarOpens}
+        autoHideDuration={5000}
+        onClose={() => setSnackbarOpens(false)}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+      >
+        <Alert severity="warning" sx={{ backgroundColor: 'red', color: 'white' }}>
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
       <div className="mx-5 my-5">
       <div className="form-group"> 
        <label htmlFor="standardInput" className="form-label mt-4">Enter Standard & Controls </label> <br/>
@@ -144,7 +204,7 @@ function YourComponent() {
               <input
                 type="text"
                 name="rational"
-                placeholder="Control"
+                placeholder="Subcontrol"
                 className='col-lg-3 col-md-3 col-sm-12 col-xs-12 input-text'
                 value={subcontrol.rational}
                 onChange={(e) => handleChange(e, controlIndex, subcontrolIndex)}
