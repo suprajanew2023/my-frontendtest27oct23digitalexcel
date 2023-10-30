@@ -1,6 +1,6 @@
 import React from 'react';
 // import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
-import EditControls from './EditControls';
+import  EditControls   from './EditControls';
 import AddControls from './AddControls';
 import { useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -16,9 +16,7 @@ const Controls = () => {
     const handleClicker = event => {
         setIsShow(false);
         setIsDisplay(current => !current);
-
     }
-
     return (
         // background-container 
        <div className='bgconatainer'>
@@ -55,9 +53,11 @@ const Controls = () => {
             <div>
                 {/* <Domain/> */}
                 <EditControls/>
-                
             </div>
         )}    
+        </div>
+        <div>
+            
         </div>
         </div>
         </div>

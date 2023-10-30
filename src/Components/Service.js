@@ -24,3 +24,8 @@ export async function putData(subcontrolId ,data)
    return await axios.put(`http://localhost:3000/updateSubcontrol/${subcontrolId }`,data,{headers:{'Content-Type':'application/json'}}
    )
 }
+export async function register(data)
+{
+   return await axios.post("http://localhost:3000/register",data,{headers:{'Content-Type':'application/json'}}
+   )
+}

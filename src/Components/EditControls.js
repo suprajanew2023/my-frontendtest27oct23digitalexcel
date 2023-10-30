@@ -11,6 +11,35 @@ function ControlDetailsTable() {
   const handleStandardChange = (event) => {
     setStandard(event.target.value);
   }
+  const handleDeleteClick = async (subcontrolId) => {
+    // Send a DELETE request to delete the subcontrol.
+    if (window.confirm("Are you sure you want to delete this subcontrol?")) {
+      try {
+        const response = await deleteData(subcontrolId);
+
+        if (response.status === 200) {
+          // Handle successful delete, show a success message if needed.
+          alert("Subcontrol Deleted Successfully");
+          Axios.get(`http://localhost:3000/getControlsByStandard/${standard}`)
+            .then((response) => {
+              setData(response.data);
+            })
+            .catch((error) => {
+              console.error('Error fetching data:', error);
+              alert("Please enter a valid Standard");
+              setData([]);
+            });
+
+        } else {
+          // Handle the case where the request was not successful.
+          console.error('Failed to delete subcontrol');
+        }
+      } catch (error) {
+        // Handle any errors that occur during the request.
+        console.error('Error deleting subcontrol:', error);
+      }
+    }
+  }
 
   const fetchControlDetails = () => {
     if (standard) {
@@ -95,7 +124,7 @@ function ControlDetailsTable() {
         />
         </div>
        <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-       <button className='mt-4 mb-4 btn-primary1' onClick={fetchControlDetails}>Click Me To Fetch Details</button>
+       <button className='mt-4 mb-4 btn-primary1' onClick={fetchControlDetails}>View Details</button>
        </div>
       </div>
       <table className="table">
@@ -103,9 +132,9 @@ function ControlDetailsTable() {
           <tr className="table-dark">
             <th scope="col">Control</th>
             <th scope="col">Ref No</th>
+            <th scope="col">SubControl</th>
             <th scope="col">Rational</th>
             <th scope="col">Rational Rating</th>
-            <th scope="col">Evidence</th>
             <th colSpan={2} scope="col">Actions</th>
           </tr>
         </thead>
@@ -168,7 +197,9 @@ function ControlDetailsTable() {
                       <button className='btn btn-success' onClick={handleSaveChanges}>Save</button>
                     ) : (
                       <button className='btn btn-primary' onClick={() => handleEditClick(subcontrol)}>Edit</button>
+                    
                     )}
+                    <button className='btn btn-primary' onClick={()=> handleDeleteClick(subcontrol._id)}>delete</button>
                   </td>
                 </tr>
               ))

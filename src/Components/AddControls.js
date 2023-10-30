@@ -101,10 +101,7 @@ function YourComponent() {
           },
         ],
       });
-    } else {
-      console.log("please enter Valid Standards")
-    }
-      
+    } 
      
   };
 
