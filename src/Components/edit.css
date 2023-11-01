@@ -1,13 +1,10 @@
 .view-container {
     padding: 10px;
-    font-size: 0.7vw;
-    min-height: 100%;
-    width:100%;
-    background-size: cover;
+    font-size: 0.7vh;
    
 }
 .table {
-    margin: 10px;
+    /* margin: 10px; */
 }
 .table-head
 {
@@ -27,7 +24,7 @@
 }
 .edit-Button {
     background-color:rgb(40, 86, 212);
-    height:3vh;
+    height:2.5vh;
     color:white;
     border-width: 0px;
     border-radius: 5px;
@@ -35,11 +32,11 @@
 }
 .delete-button {
     background-color: red;
-    height:3vh;
+    height:2.3vh;
     color:white;
     border-width: 0px;
     border-radius: 5px;
-    font-size: 1vh;
+    font-size: 0.4vh;
 
 }
 /* .snackbar-container {
@@ -65,7 +62,8 @@
     justify-content: space-between;
   }
   .standard-card {
-    width:95vw;
+    width:90vw;
+    margin-bottom: 15px;
     color:white;
     margin-top: 10px;
     border-radius: 10px;
@@ -73,11 +71,13 @@
     background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   }
 .table {
-    width:95%;
+    width:100%;
+    font-size: 1.2vh;
+    text-align: center;
     
 }
 .Accordian {
-    width:95vw;
+    width:90vw;
     margin-bottom: 20px;
     box-shadow: rgba(0, 0, 0, 0.35) 20px 20px 20px;
 
@@ -86,5 +86,5 @@
     width:4vw;
 }
 .table-subcontrol {
-    width:60vw;
+    width:50vw;
 }

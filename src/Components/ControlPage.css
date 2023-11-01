@@ -1,12 +1,12 @@
 .body {
     margin: 0px;
     padding: 0px;
-    font-size: 0.8;
+    font-size: 0.8vh;
 }
 .bgconatainer {
     background-color: rgb(161, 211, 245);
+    width:100vw;
     min-height:100vh;
-    width:100%;
     background-size: cover;
  
 }
@@ -14,6 +14,7 @@
     background-color: rgb(229, 230, 240);
     color:white;
     height:5vh;
+    width:100vw;
     box-shadow: 10px 9px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) 
 }
 /* .logo-container {
@@ -22,8 +23,11 @@
     align-items: center;
 } */
 .rhym-logo {
-    width:12%;
+    min-width:17vw;
     height:5vh;
+}
+.control-btn {
+    margin-top: 20px;
 }
 
 

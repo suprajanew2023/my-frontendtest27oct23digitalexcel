@@ -16,7 +16,7 @@ const Controls = () => {
 
         </header>
       <div className='boom'>
-      <button className='button-login' onClick={() => setShowAddControls(!showAddControls)}>
+      <button className='button-login control-btn' onClick={() => setShowAddControls(!showAddControls)}>
          {showAddControls ? 'View Standard' : 'Add Standard'}
          </button>
        {showAddControls ? <AddControls /> : <EditControls />}

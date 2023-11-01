@@ -47,7 +47,7 @@ function ControlDetailsTable() {
                 setData([]);
               });
           } else {
-            alert("Please Check the Standard Name that you have entered");
+          
           }
         }
         const showSnackbar = (message) => {
@@ -182,7 +182,7 @@ function ControlDetailsTable() {
           <select
             id="standardSelect"
             value={standard}
-            className="form-control mb-4 standard-card"
+            className="form-control standard-card"
             onClick={fetchControlDetails}
             onChange={handleStandardChange}
           >

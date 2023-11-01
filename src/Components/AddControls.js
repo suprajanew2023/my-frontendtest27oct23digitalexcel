@@ -168,8 +168,9 @@ function YourComponent() {
         </Alert>
       </Snackbar>
       <div className="mx-5 my-5">
-      <div className="form-group"> 
-       <label htmlFor="standardInput" className="form-label mt-4">Enter Standard & Controls </label> <br/>
+             <h4 htmlFor="standardInput" className="form-label mt-4">Enter Standard & Controls </h4> <br/>
+
+      <div className="form-group input-container"> 
        <input
         type="text"
         name="standard"
@@ -236,7 +237,7 @@ function YourComponent() {
           <div className='btn-container'>
           <button className="btn btn-primary m-2" onClick={() => addSubcontrol(controlIndex)}>Add Subcontrol</button>
           <button className="btn btn-primary m-2" onClick={addControl}>Add Control</button>
-          <button className="btn btn-danger-1 m-2" onClick={() => deleteControl(controlIndex)}><BsFillTrash3Fill/>Control</button>
+          <button className="btn btn-danger-1 m-2" onClick={() => deleteControl(controlIndex)}> Delete Control</button>
           </div>
         </div>
 
