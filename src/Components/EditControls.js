@@ -19,7 +19,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+
+
+
 function ControlDetailsTable() {
   const [standard, setStandard] = useState('');
   const [data, setData] = useState([]);
@@ -34,107 +36,106 @@ function ControlDetailsTable() {
   }
 
   const fetchControlDetails = () => {
-    if (standard) {
-      Axios.get(`http://localhost:3000/getControlsByStandard/${standard}`)
-        .then((response) => {
-          setData(response.data);
-        })
-        .catch((error) => {
-          console.error('Error fetching data:', error);
-          alert("Please enter a valid Standard");
-          setData([]);
+          if (standard) {
+            Axios.get(`https://digitalexcelbackend.onrender.com/getControlsByStandard/${standard}`)
+              .then((response) => {
+                setData(response.data);
+              })
+              .catch((error) => {
+                console.error('Error fetching data:', error);
+                alert("Please enter a valid Standard");
+                setData([]);
+              });
+          } else {
+            alert("Please Check the Standard Name that you have entered");
+          }
+        }
+        const showSnackbar = (message) => {
+          setSnackbarMessage(message);
+          setSnackbarOpen(true);
+          setTimeout(() => {
+            setSnackbarOpen(false);
+          }, 5000);
+        };
+      
+        useEffect(() => {
+          // Fetch the list of standards when the component mounts
+          Axios.get('https://digitalexcelbackend.onrender.com/standards')
+            .then((response) => {
+              setStandardsList(response.data);
+            })
+            .catch((error) => {
+              console.error('Error fetching standards:', error);
+            });
+        }, []);
+
+        const handleEditClick = (subcontrol) => {
+          setEditedSubcontrol(subcontrol);
+          console.log(subcontrol);
+        }
+
+        const handleInputChange = (event) => {
+          const { name, value } = event.target;
+
+        setEditedSubcontrol({
+          ...editedSubcontrol,
+          [name]: value,
         });
-    } else {
-      alert("Please Check the Standard Name that you have entered");
-    }
-  }
-  const showSnackbar = (message) => {
-    setSnackbarMessage(message);
-    setSnackbarOpen(true);
-    setTimeout(() => {
-      setSnackbarOpen(false);
-    }, 5000);
-  };
-  
-  useEffect(() => {
-    // Fetch the list of standards when the component mounts
-    Axios.get('http://localhost:3000/standards')
-      .then((response) => {
-        setStandardsList(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching standards:', error);
-      });
-  }, []);
+        console.log(editedSubcontrol);
+      }
 
-  const handleEditClick = (subcontrol) => {
-    setEditedSubcontrol(subcontrol);
-    console.log(subcontrol);
-  }
+      const handleSaveChanges = async() => {
+        // Send a PUT request to update the editedSubcontrol data.
+        if (editedSubcontrol) {
+          try {
+            const response = await putData(editedSubcontrol._id, editedSubcontrol);
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
+            if (response.status === 200) {
+              
+              showSnackbar('Data Updated Successfully');
+              
+              fetchControlDetails();
+            } else {
+            
+              console.error('Failed to update data');
+            }
 
-    // Update the editedSubcontrol data when an input field changes.
-    setEditedSubcontrol({
-      ...editedSubcontrol,
-      [name]: value,
-    });
-    console.log(editedSubcontrol);
-  }
-
-  const handleSaveChanges = async() => {
-    // Send a PUT request to update the editedSubcontrol data.
-    if (editedSubcontrol) {
-      try {
-        const response = await putData(editedSubcontrol._id, editedSubcontrol);
-
-        if (response.status === 200) {
           
-          showSnackbar('Data Updated Successfully');
-          
-          fetchControlDetails();
-        } else {
-        
-          console.error('Failed to update data');
+            setEditedSubcontrol(null);
+          } catch (error) {
+            
+            console.error('Error updating data:', error);
+          }
+        }
+      }
+
+      const handleDeleteClick = async (subcontrolId) => {
+        setSubcontrolIdToDelete(subcontrolId);
+        setDeleteConfirmationOpen(true);
+      }
+      const cancelDelete = () => {
+        setDeleteConfirmationOpen(false);
+        setSubcontrolIdToDelete(null);
+      }
+      const confirmDelete = async () => {
+        if (subcontrolIdToDelete) {
+          try {
+            const response = await deleteData(subcontrolIdToDelete);
+
+            if (response.status === 200) {
+              showSnackbar('Data Deleted Successfully');
+              fetchControlDetails();
+            } else {
+              console.error('Failed to delete subcontrol');
+            }
+          } catch (error) {
+            console.error('Error deleting subcontrol:', error);
+          }
         }
 
-       
-        setEditedSubcontrol(null);
-      } catch (error) {
-        
-        console.error('Error updating data:', error);
+        setDeleteConfirmationOpen(false);
+        setSubcontrolIdToDelete(null);
       }
-    }
-  }
-
-  const handleDeleteClick = async (subcontrolId) => {
-    setSubcontrolIdToDelete(subcontrolId);
-    setDeleteConfirmationOpen(true);
-  }
-  const cancelDelete = () => {
-    setDeleteConfirmationOpen(false);
-    setSubcontrolIdToDelete(null);
-  }
-  const confirmDelete = async () => {
-    if (subcontrolIdToDelete) {
-      try {
-        const response = await deleteData(subcontrolIdToDelete);
-
-        if (response.status === 200) {
-          showSnackbar('Data Deleted Successfully');
-          fetchControlDetails();
-        } else {
-          console.error('Failed to delete subcontrol');
-        }
-      } catch (error) {
-        console.error('Error deleting subcontrol:', error);
-      }
-    }
-
-    setDeleteConfirmationOpen(false);
-    setSubcontrolIdToDelete(null);
-  }
 
   return (
     <div className='view-container mx-4 my-4'>

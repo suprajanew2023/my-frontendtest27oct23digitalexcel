@@ -1,13 +1,13 @@
 .view-container {
     padding: 10px;
     font-size: 0.7vw;
-    min-height: 100vh;
+    min-height: 100%;
     width:100%;
     background-size: cover;
    
 }
 .table {
-    margin: 20px;
+    margin: 10px;
 }
 .table-head
 {
