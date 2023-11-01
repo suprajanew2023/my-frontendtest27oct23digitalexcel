@@ -47,7 +47,7 @@ function ControlDetailsTable() {
                 setData([]);
               });
           } else {
-          
+           
           }
         }
         const showSnackbar = (message) => {
@@ -182,7 +182,7 @@ function ControlDetailsTable() {
           <select
             id="standardSelect"
             value={standard}
-            className="form-control standard-card"
+            className="form-control mb-4 standard-card"
             onClick={fetchControlDetails}
             onChange={handleStandardChange}
           >
