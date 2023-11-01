@@ -52,7 +52,7 @@ function Register() {
 
   return (
     <div className='bg-container'>
-      <div className='card-container'>
+      <div className='container_card'>
         <h2>Register</h2>
         <form onSubmit={handleSubmit}>
           <input
