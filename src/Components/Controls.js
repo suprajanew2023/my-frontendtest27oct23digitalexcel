@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import EditControls from './EditControls';
 import AddControls from './AddControls';
 import './ControlPage.css';
-import AAQ from "/home/thrinath/loginnew/my-frontendtest27oct23digitalexcel/src/LoginPage/AAQ-1904.png"
+import AAQ from "../LoginPage/AAQ-1904.png"
 
 const Controls = () => {
     const [showAddControls, setShowAddControls] = useState(false);
