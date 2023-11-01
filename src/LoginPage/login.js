@@ -19,7 +19,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://digitalexcelbackend.onrender.com/login', { email, password });
+      const response = await axios.post('https://backenddigitalexcel.onrender.com/login', { email, password });
       localStorage.setItem('token', response.data.token);
       alert('Logged in successfully');
       abc(nav("/ControlsPage"))
