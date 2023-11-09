@@ -15,7 +15,10 @@
     color:white;
     height:5vh;
     width:100vw;
-    box-shadow: 10px 9px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) 
+    box-shadow: 10px 9px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) ;
+    display:flex;
+    justify-content:space-between;
+    padding-right:30px;
 }
 /* .logo-container {
     display: flex;
@@ -28,6 +31,23 @@
 }
 .control-btn {
     margin-top: 20px;
+}
+
+.button-logout {
+    background-color: #dc3545; /* Bootstrap's danger color for red */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius:50px;
+    text-decoration:none;
+}
+
+.button-logout:hover {
+    background-color: #bd2130; /* Darker red on hover */
 }
 
 
