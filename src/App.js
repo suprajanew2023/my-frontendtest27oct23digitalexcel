@@ -1,6 +1,6 @@
 
 import Login from './LoginPage/login';
-import { BrowserRouter as Main,Route,Routes } from 'react-router-dom';
+import { HashRouter as Main,Route,Routes } from 'react-router-dom';
 import Controls from './Components/Controls';
 import { useEffect } from 'react';
 
