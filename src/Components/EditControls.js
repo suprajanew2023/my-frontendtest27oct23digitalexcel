@@ -37,7 +37,7 @@ function ControlDetailsTable() {
 
   const fetchControlDetails = () => {
           if (standard) {
-            Axios.get(`https://digitalexcelbackend.onrender.com/getControlsByStandard/${standard}`)
+            Axios.get(`https://digitalexcelcrud.onrender.com/getControlsByStandard/${standard}`)
               .then((response) => {
                 setData(response.data);
               })
@@ -60,7 +60,7 @@ function ControlDetailsTable() {
       
         useEffect(() => {
           // Fetch the list of standards when the component mounts
-          Axios.get('https://digitalexcelbackend.onrender.com/standards')
+          Axios.get('https://digitalexcelcrud.onrender.com/standards')
             .then((response) => {
               setStandardsList(response.data);
             })
