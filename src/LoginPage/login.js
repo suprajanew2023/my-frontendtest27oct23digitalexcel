@@ -19,7 +19,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://digitalexcelbackend.onrender.com/login', { email, password });
+      const response = await axios.post('https://digitalexcelcrud.onrender.com/login', { email, password });
       localStorage.setItem('token', response.data.token);
       alert('Logged in successfully');
       abc(nav("/ControlsPage"))
@@ -40,7 +40,7 @@ function Login() {
               <input className='input' type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
               <div className='btn-comtainer '>
               <button className='button-login ' type="submit">Login</button>
-              <button className='button-login ' type="button" onClick={() => setShowRegister(true)}>SignUp</button> 
+              {/* <button className='button-login ' type="button" onClick={() => setShowRegister(true)}>SignUp</button>  */}
               </div>
             </form>
         </div>
