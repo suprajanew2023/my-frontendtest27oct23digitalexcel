@@ -16,6 +16,8 @@ const Controls = () => {
     };
     return (
         <div className='bgconatainer'>
+            
+        <div className="cont">
         <header className='header-1'>
             <div className='logo-container'>
                 <img className='rhym-logo' src={AAQ} alt="logo"/>
@@ -25,6 +27,7 @@ const Controls = () => {
                     Logout
                 </Button>
         </header>
+        </div>
       <div className='boom'>
       <button className='button-login control-btn' onClick={() => setShowAddControls(!showAddControls)}>
          {showAddControls ? 'View Standard' : 'Add Standard'}
