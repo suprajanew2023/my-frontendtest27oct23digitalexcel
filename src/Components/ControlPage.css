@@ -49,5 +49,10 @@
 .button-logout:hover {
     background-color: #bd2130; /* Darker red on hover */
 }
-
+.cont{
+    position: sticky;
+    top: 0;
+    
+    z-index: 1000; 
+}
 
