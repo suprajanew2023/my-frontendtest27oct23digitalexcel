@@ -19,8 +19,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import Button from '@mui/material/Button';
-
-
+import ReactPaginate from 'react-paginate';
+import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 
 function ControlDetailsTable() {
   const [standard, setStandard] = useState('');
@@ -31,6 +31,8 @@ function ControlDetailsTable() {
   const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
   const [subcontrolIdToDelete, setSubcontrolIdToDelete] = useState(null);
   const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
   const handleStandardChange = (event) => {
     setStandard(event.target.value);
   }
@@ -40,10 +42,11 @@ function ControlDetailsTable() {
             Axios.get(`https://digitalexcelcrud.onrender.com/getControlsByStandard/${standard}`)
               .then((response) => {
                 setData(response.data);
+                setCurrentPage(1);
               })
               .catch((error) => {
                 console.error('Error fetching data:', error);
-                alert("Please enter a valid Standard");
+                
                 setData([]);
               });
           } else {
@@ -68,7 +71,10 @@ function ControlDetailsTable() {
               console.error('Error fetching standards:', error);
             });
         }, []);
-
+        const handlePageChange = (selectedPage) => {
+          setCurrentPage(selectedPage);
+        };
+        const paginatedControls = data.flatMap(entry => entry.controls).slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
         const handleEditClick = (subcontrol) => {
           setEditedSubcontrol(subcontrol);
           console.log(subcontrol);
@@ -196,8 +202,8 @@ function ControlDetailsTable() {
         </div>
       </div>
       <div>
-        {data.map((entry, index) => (
-          entry.controls.map((control) => (
+        {
+          paginatedControls.map((control) => (
             <Accordion className="Accordian " key={control._id}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
@@ -291,13 +297,29 @@ function ControlDetailsTable() {
           </AccordionDetails>
         </Accordion>
       ))
-    ))}
+    }
   </div>
- 
+  <ReactPaginate
+  pageCount={Math.ceil(data.flatMap(entry => entry.controls).length / itemsPerPage)}
+  pageRangeDisplayed={5}
+  marginPagesDisplayed={2}
+  onPageChange={({ selected }) => handlePageChange(selected + 1)}
+  containerClassName="pagination pagination-right" // Add a custom class
+  activeClassName="active"
+  previousLabel={<ChevronLeft />} 
+  nextLabel={<ChevronRight />} 
+  breakLabel="..."
+  breakClassName="break-me"
+  pageLinkClassName="page-link"
+  previousLinkClassName="page-link"
+  nextLinkClassName="page-link"
+  disabledClassName="disabled"
+/>
+
+
 </div>
 
 );
 }
 
 export default ControlDetailsTable;
-
